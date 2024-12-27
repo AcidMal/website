@@ -1,10 +1,12 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import ThemeSwitcher from '/src/components/ThemeSwitcher.astro';
-import SocialButtons from '/src/components/SocialButtons.astro';
 import { Home, HelpCircle } from 'lucide-react';
 import { acidmalicon } from 'astro:assets';
+
+import ThemeSwitcher from '/src/components/ThemeSwitcher.astro';
+import SocialButtons from '/src/components/SocialButtons.astro';
 import AcidMalIcon from '../assets/acidmalicon.jpg';
+
 
 interface Props {
   title: string;
@@ -19,7 +21,7 @@ const { title, description = "AcidMal's Website" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/acidmal.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <title>{title}</title>
