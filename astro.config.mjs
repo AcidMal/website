@@ -9,10 +9,15 @@ import icon from "astro-icon";
 export default defineConfig({
   integrations: [react(), tailwind()],
   adapter: vercel(),
-  output: 'static',  // Ensure static file output
+  output: 'static',
   build: {
-    assets: 'assets'  // This is the default, but let's make it explicit
-  }
+    assets: 'assets'
+  },
+  vite: {
+    build: {
+      assetsInlineLimit: 0,
+    },
+  },
 });
 
 
