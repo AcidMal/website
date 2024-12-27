@@ -1,11 +1,12 @@
 ---
-import Layout from '../components/layout.astro'
+import Layout from '.../components/layout.astro'
 ---
 
 <Layout title="Blog | AcidMal">
   <div class="max-w-4xl mx-auto">
-    <Section>
+    <section>
 	<h1 class="text-4xl font-bold mb-8">﻿Welcome!</h1>
+	   <div class="grid gap-8">
 
 		<p>
 		This is just a first post of many to come. Although infrequent this will be longer
@@ -49,7 +50,8 @@ import Layout from '../components/layout.astro'
 		</p>
 		
 		<p>Goodbye for now.</p>
-    </Section>
+    </section>
+   </div>
   </div>
 </Layout>
 
