@@ -44,7 +44,7 @@ const TwitterFeed: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg">
         <div className="animate-pulse space-y-4">
           <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
           {[1, 2, 3].map((i) => (
@@ -83,7 +83,9 @@ const TwitterFeed: React.FC = () => {
         href="https://twitter.com/iamacidmal"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block mt-4 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+        className="inline-block mt-4 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-
+        blue-300"
+        style="color:#d358f5"
       >
         View more on Twitter
       </a>
