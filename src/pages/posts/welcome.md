@@ -1,5 +1,5 @@
 ---
-import Layout from '../../components/layout.astro'
+import Layout from '../../components/Layout.astro'
 ---
 
 <Layout title="Blog | AcidMal">
