@@ -1,24 +1,55 @@
-﻿# Welcome!
+---
+import Layout from '../components/layout.astro'
+---
 
-This is just a first post of many to come. Although infrequent this will be longer format platform. 
+<Layout title="Blog | AcidMal">
+  <div class="max-w-4xl mx-auto">
+    <Section>
+	<h1>﻿Welcome!</h1>
 
+		<p>
+		This is just a first post of many to come. Although infrequent this will be longer
+		format platform.
+		</p>
 
-## Purpose
+	<h2 id="purpose">Purpose</h2>
+		<p>
+		I&#39;ll mainly use this to post updates on projects I have, one of which is this
+		website. Ill also ramble on about random daily stuff and hobbies such as my Amateur Radio
+		hobby.
+		</p>
 
-I'll mainly use this to post updates on projects I have, one of which is this website. Ill also ramble on about random daily stuff and hobbies such as my Amateur Radio hobby.
+	<h2 id="website-development">Website Development</h2>
+		<p>
+		At the moment I have just started developing this website using <a href="https:/
+		/astro.build/">Astro</a>. Its very minimal at the moment but with further learning I want
+		to expand this website out further.
+		</p>
 
-## Website Development
+	<h2 id="minecraft-server">Minecraft Server</h2>
+		<p>
+		As mentioned in the <a href="https://acidmal.com/">Homepage</a> I have been working on a
+		Minecraft Server. It currently runs a mod pack called ATM (All The Mods) 10 and we have a
+		panel called <a href="https://pterodactyl.io/">Pterodactyl Panel</a> as the administration
+		panel.
+		</p>
 
-At the moment I have just started developing this website using [Astro](https://astro.build/). Its very minimal at the moment but with further learning I want to expand this website out further.
+		<p>
+		I may have made a little mistake with the choice in hosting provider which doesn&#39;t
+		have a high enough CPU clock speed which at the moment is a hindrance. Next on the To-Do
+		list is to change the hosting provider as well as update some of the configurations so the
+		server runs just that tad bit smoother.
+		</p>
 
-## Minecraft Server
+	<h2 id="closing">Closing</h2>
+		<p>
+		In future ill probably update this every month or so with news but not too sure yet.
+		Feel free to message me on my social media platforms if you have any questions or
+		improvements!
+		</p>
+		
+		<p>Goodbye for now.</p>
+    </Section>
+  </div>
+</Layout>
 
-As mentioned in the [Homepage](https://acidmal.com/) I have been working on a Minecraft Server. It currently runs a mod pack called ATM (All The Mods) 10 and we have a panel called [Pterodactyl Panel](https://pterodactyl.io/) as the administration panel. 
-
-I may have made a little mistake with the choice in hosting provider which doesn't have a high enough CPU clock speed which at the moment is a hindrance. Next on the To-Do list is to change the hosting provider as well as update some of the configurations so the server runs just that tad bit smoother.
-
-## Closing
-
-In future ill probably update this every month or so with news but not too sure yet. Feel free to message me on my social media platforms if you have any questions or improvements!
-
-Goodbye for now.
