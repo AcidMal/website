@@ -59,7 +59,7 @@ const TwitterFeed: React.FC = () => {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <div>
       <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">Latest Tweets</h2>
       {error && (
         <p className="text-red-500 dark:text-red-400 mb-4">{error}</p>

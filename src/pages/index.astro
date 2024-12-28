@@ -40,11 +40,16 @@ import TwitterFeed from '../components/TwitterFeed';
         <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
           <li>IP: join.acidmal.com</li>
           <li>Minecraft Version: 1.21.1</li>
-          <li>Mod Pack: All the Mods 10 - 2.8</li>
+          <li>Mod Pack: 
+	  <a href="https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6009022" target="_blank"
+	  class="text-purple-400 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300">
+	  All the Mods 10 - 2.8</a> </li>
+	  <li>Check out our Server <a href={`/gallary/minecraft`} class="text-purple-400 hover:text-purple-600
+	  dark:text-purple-400 dark:hover:text-purple-300">Gallary</a>!</li>
         </ul>
       </section>
-       <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-          <TwitterFeed client:load />
+      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <TwitterFeed client:load />
       </section>
     </div>
   </div>
