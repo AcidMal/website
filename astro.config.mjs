@@ -8,14 +8,14 @@ import cloudflare from '@astrojs/cloudflare'
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind(), icon()],
-  output: 'server',
+  output: 'hybrid',
   adapter: cloudflare(),
   vite: {
     build: {
       assetsInlineLimit: 0,
     },
     ssr: {
-      noExternal: ['false'],
+      noExternal: ['react-icons'],
     },
     // Ensure environment variables are loaded
     envPrefix: 'PUBLIC_',
