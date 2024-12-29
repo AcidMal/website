@@ -27,6 +27,8 @@ const getMinecraftServerStatus = async (host: string): Promise<MinecraftServerSt
 
 export const GET: APIRoute = async ({ request }) => {
   console.log('API route called', new Date().toISOString());
+  console.log('Request URL:', request.url);
+  console.log('Environment variables:', import.meta.env);
 
   const headers = {
     'Access-Control-Allow-Origin': '*',
@@ -43,7 +45,7 @@ export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   let host = url.searchParams.get('host') || import.meta.env.PUBLIC_MINECRAFT_SERVER_HOST;
 
-  console.log('Requested host:', host);
+  console.log('Requested host:', host, 'Type:', typeof host);
 
   if (!host) {
     console.error('Host parameter is missing and not set in environment variables');
