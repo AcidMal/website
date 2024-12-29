@@ -1,6 +1,8 @@
 import type { APIRoute } from 'astro';
 import net from 'net';
 
+export const prerender = false
+
 interface MinecraftServerStatus {
   online: boolean;
   players?: {

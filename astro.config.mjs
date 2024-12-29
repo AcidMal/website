@@ -9,7 +9,7 @@ import cloudflare from '@astrojs/cloudflare'
 export default defineConfig({
   integrations: [react(), tailwind(), icon()],
   output: 'static',
-  adapter: vercel(),
+  adapter: cloudflare(),
   vite: {
     build: {
       assetsInlineLimit: 0,

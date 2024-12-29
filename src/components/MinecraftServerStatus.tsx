@@ -1,6 +1,8 @@
 import React from 'react';
 import useSWR from 'swr';
 
+export const prerender = false
+
 interface MinecraftServerStatusProps {
   host?: string;
 }
