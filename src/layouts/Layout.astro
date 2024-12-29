@@ -54,15 +54,17 @@ const { title, description = "AcidMal's Website" } = Astro.props;
     </script>
   </head>
   <body class="flex flex-col min-h-full bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <header class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 shadow-md">
+    <header class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 shadow-md mb-3">
       <nav class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
-          <img 
-            src={AcidMalIcon.src} 
-            alt="AcidMal Icon" 
-            class="w-10 h-10 rounded-full"
-          />
-          <a href="/" class="text-xl font-bold">AcidMal</a>
+	  <a href="/" class="hover:ease-in-out hover:duration-300 hover:bg-grey-900 hover:opacity-50">
+            <img 
+              src={AcidMalIcon.src} 
+              alt="AcidMal Icon" 
+              class="w-12 h-12 rounded-full mr-2 border-2 border-gray-900 dark:border-2 dark:border-gray-100"
+            />
+	  </a>
+          <a href="/" class="text-2xl font-bold hover:ease-in-out hover:duration-300 hover:text-gray-400">AcidMal</a>
         </div>
         <div class="flex items-center space-x-4">
           <a href="/" class="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors
