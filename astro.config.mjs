@@ -7,7 +7,7 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   integrations: [react(), tailwind(), icon()],
   output: 'server',
-  adapter: cloudflare(),
+  adapter: vercel(),
   vite: {
     build: {
       rollupOptions: {
