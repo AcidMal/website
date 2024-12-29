@@ -14,8 +14,6 @@ export default defineConfig({
     build: {
       assetsInlineLimit: 0,
     },
-    ssr: {
-    },
     // Ensure environment variables are loaded
     envPrefix: 'PUBLIC_',
   },
