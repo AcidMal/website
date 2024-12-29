@@ -58,7 +58,17 @@ export const GET: APIRoute = async ({ request }) => {
 
   try {
     console.log(`Fetching Minecraft server status for ${host}`);
-    const status = await getMinecraftServerStatus(host);
+    const response = await fetch(`https://api.mcsrvstat.us/2/${host}`);
+    const data = await response.json();
+    const status = {
+      online: data.online,
+      players: data.players ? {
+        online: data.players.online,
+        max: data.players.max
+      } : undefined,
+      version: data.version,
+      lastUpdated: Date.now()
+    };
     console.log(`Minecraft server status:`, status);
     return new Response(JSON.stringify(status), {
       status: 200,

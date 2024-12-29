@@ -12,7 +12,7 @@ interface ServerStatus {
     max: number;
   };
   version?: string;
-  lastUpdated: number;
+  lastUpdated?: number;
 }
 
 const fetcher = async (url: string) => {
@@ -31,6 +31,7 @@ const MinecraftServerStatus: React.FC<MinecraftServerStatusProps> = ({ host }) =
       refreshInterval: 30000, // Refresh every 30 seconds
       revalidateOnFocus: true, // Refresh when the page gets focus
       dedupingInterval: 5000, // Dedupe requests within 5 seconds
+      fallbackData: { online: false, lastUpdated: Date.now() }, // Provide fallback data
     }
   );
 
@@ -43,7 +44,7 @@ const MinecraftServerStatus: React.FC<MinecraftServerStatusProps> = ({ host }) =
   }
 
   if (!status) {
-    return <div className="animate-pulse bg-gray-200 dark:bg-gray-700 p-4 rounded-lg">Fetching Minecraft server status...</div>;
+    return <div className="animate-pulse bg-gray-200 dark:bg-gray-700 p-4 rounded-lg">Pinging Minecraft server...</div>;
   }
 
   return (
@@ -66,9 +67,11 @@ const MinecraftServerStatus: React.FC<MinecraftServerStatusProps> = ({ host }) =
       {status.online && status.version && (
         <p className="mb-2">Version: {status.version}</p>
       )}
-      <p className="text-sm text-gray-500">
-        Last updated: {new Date(status.lastUpdated).toLocaleTimeString()}
-      </p>
+      {status.lastUpdated && (
+        <p className="text-sm text-gray-500">
+          Last updated: {new Date(status.lastUpdated).toLocaleTimeString()}
+        </p>
+      )}
       <button
         onClick={() => mutate()}
         className="mt-2 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
