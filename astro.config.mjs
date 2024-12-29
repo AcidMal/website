@@ -15,7 +15,6 @@ export default defineConfig({
       assetsInlineLimit: 0,
     },
     ssr: {
-      noExternal: ['react-icons'],
     },
     // Ensure environment variables are loaded
     envPrefix: 'PUBLIC_',
