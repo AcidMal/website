@@ -1,6 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TwitterFeed from '../components/TwitterFeed';
+import MinecraftServerStatus from '../components/MinecraftServerStatus';
+
+const minecraftServerHost = import.meta.env.PUBLIC_MINECRAFT_SERVER_HOST;
+console.log('Minecraft Server Host:', minecraftServerHost);
 ---
 
 <Layout title="Home | AcidMal">
@@ -36,17 +40,23 @@ import TwitterFeed from '../components/TwitterFeed';
       </section>
 
       <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">Join the Minecraft</h2>
-        <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
-          <li>IP: join.acidmal.com</li>
-          <li>Minecraft Version: 1.21.1</li>
-          <li>Mod Pack: 
-	  <a href="https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6009022" target="_blank"
-	  class="text-purple-400 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300">
-	  All the Mods 10 - 2.8</a> </li>
-	  <li>Check out our Server <a href={`/gallary/minecraft`} class="text-purple-400 hover:text-purple-600
-	  dark:text-purple-400 dark:hover:text-purple-300">Gallary</a>!</li>
-        </ul>
+	<div class="grid grid-cols-2 gap-4">
+	  <div>
+          <h2 class="text-2xl font-bold mb-4">Join the Minecraft</h2>
+          <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+            <li>IP: join.acidmal.com</li>
+            <li>Minecraft Version: 1.21.1</li>
+            <li>Mod Pack: 
+	    <a href="https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6009022" target="_blank"
+	    class="text-purple-400 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300">
+	    All the Mods 10 - 2.8</a> </li>
+	    <li>Check out our Server <a href={`/gallary/minecraft`} class="text-purple-400 hover:text-purple-600
+	    dark:text-purple-400 dark:hover:text-purple-300">Gallary</a>!</li>
+          </ul>
+	  </div>
+	  <div>
+            <MinecraftServerStatus host={minecraftServerHost} client:load />
+	</div>
       </section>
       <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
         <TwitterFeed client:load />
@@ -54,5 +64,9 @@ import TwitterFeed from '../components/TwitterFeed';
     </div>
   </div>
 </Layout>
+
+<script>
+  console.log('Page loaded. Minecraft Server Host:', import.meta.env.PUBLIC_MINECRAFT_SERVER_HOST);
+</script>
 
 
