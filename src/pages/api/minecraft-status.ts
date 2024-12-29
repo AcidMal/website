@@ -1,7 +1,4 @@
 import type { APIRoute } from 'astro';
-import net from 'net';
-
-export const prerender = false
 
 interface MinecraftServerStatus {
   online: boolean;
@@ -13,47 +10,19 @@ interface MinecraftServerStatus {
   lastUpdated: number;
 }
 
-const pingMinecraftServer = (host: string, port: number = 25565): Promise<MinecraftServerStatus> => {
-  return new Promise((resolve) => {
-    const socket = net.connect(port, host, () => {
-      socket.write(Buffer.from([0xFE, 0x01]));
-    });
+const getMinecraftServerStatus = async (host: string): Promise<MinecraftServerStatus> => {
+  const response = await fetch(`https://api.mcsrvstat.us/2/${host}`);
+  const data = await response.json();
 
-    socket.setTimeout(5000);
-
-    socket.on('data', (data) => {
-      socket.end();
-      if (data != null && data != '') {
-        const serverInfo = data.toString().split('\x00\x00\x00');
-        if (serverInfo.length >= 6) {
-          resolve({
-            online: true,
-            players: {
-              online: parseInt(serverInfo[4]),
-              max: parseInt(serverInfo[5]),
-            },
-            version: serverInfo[2],
-            lastUpdated: Date.now(),
-          });
-        } else {
-          resolve({ online: true, lastUpdated: Date.now() });
-        }
-      } else {
-        resolve({ online: false, lastUpdated: Date.now() });
-      }
-    });
-
-    socket.on('timeout', () => {
-      socket.end();
-      resolve({ online: false, lastUpdated: Date.now() });
-    });
-
-    socket.on('error', (error) => {
-      console.error(`Socket error: ${error.message}`);
-      socket.end();
-      resolve({ online: false, lastUpdated: Date.now() });
-    });
-  });
+  return {
+    online: data.online,
+    players: data.players ? {
+      online: data.players.online,
+      max: data.players.max
+    } : undefined,
+    version: data.version,
+    lastUpdated: Date.now()
+  };
 };
 
 export const GET: APIRoute = async ({ request }) => {
@@ -88,16 +57,16 @@ export const GET: APIRoute = async ({ request }) => {
   host = host.replace(/^https?:\/\//, '');
 
   try {
-    console.log(`Pinging Minecraft server at ${host}`);
-    const status = await pingMinecraftServer(host);
+    console.log(`Fetching Minecraft server status for ${host}`);
+    const status = await getMinecraftServerStatus(host);
     console.log(`Minecraft server status:`, status);
     return new Response(JSON.stringify(status), {
       status: 200,
       headers
     });
   } catch (error) {
-    console.error('Error pinging Minecraft server:', error);
-    return new Response(JSON.stringify({ error: 'Failed to ping server', details: error.message, lastUpdated: Date.now() }), {
+    console.error('Error fetching Minecraft server status:', error);
+    return new Response(JSON.stringify({ error: 'Failed to fetch server status', details: error.message, lastUpdated: Date.now() }), {
       status: 500,
       headers
     });
