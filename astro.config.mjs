@@ -7,17 +7,9 @@ import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   integrations: [react(), tailwind(), icon()],
-  output: 'server',
+  output: 'static',
   adapter: vercel(),
   vite: {
-    build: {
-      rollupOptions: {
-        external: ['net']
-      }
-    },
-    define: {
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    },
     ssr: {
       noExternal: ['react-icons'],
     },
