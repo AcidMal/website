@@ -83,7 +83,8 @@ const TwitterFeed: React.FC = () => {
         href="https://twitter.com/iamacidmal"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block mt-4 text-purple-400 hover:text-purple-600 dark:text-purple-400
+        className="inline-block mt-4 text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300
+        hover:text-purple-600 dark:text-purple-400 hover:ease-in-out hover:duration-300 
         dark:hover:text-purple-300"
       >
         View more on Twitter
