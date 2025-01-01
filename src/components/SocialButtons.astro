@@ -1,6 +1,6 @@
 ---
 import { Github, Instagram } from 'lucide-react';
-import { Discord, X } from 'simple-icons-astro';
+import { Discord, X, Steam } from 'simple-icons-astro';
 
 interface Props {
   className?: string;
@@ -41,6 +41,14 @@ const { className = '' } = Astro.props;
     aria-label="GitHub"
   >
     <Github className="w-5 h-5" />
+  </a>
+
+  <a
+    href="https://steamcommunity.com/id/AcidMal/"
+    class="social-button"
+    aria-label="Steam"
+  >
+    <Steam className="w-5 h-5" />
   </a>
 
 </div>

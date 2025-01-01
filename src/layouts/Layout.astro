@@ -1,10 +1,9 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import { Home, HelpCircle, MessageSquareMore } from 'lucide-react';
-import { acidmalicon } from 'astro:assets';
 
-import ThemeSwitcher from '/src/components/ThemeSwitcher.astro';
-import SocialButtons from '/src/components/SocialButtons.astro';
+import ThemeSwitcher from '../components/ThemeSwitcher.astro';
+import SocialButtons from '../components/SocialButtons.astro';
 import AcidMalIcon from '../assets/acidmalicon.jpg';
 
 
@@ -69,15 +68,15 @@ const { title, description = "AcidMal's Website" } = Astro.props;
         <div class="flex items-center space-x-4">
           <a href="/" class="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors
              duration-200" aria-label="Home">
-            <Home class="w-5 h-5" />
+            <Home className="w-6 h-6" />
           </a>
           <a href="/blog" class="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition
              -colors duration-200" aria-label="About">
-            <MessageSquareMore class="w-5 h-5" />
+            <MessageSquareMore className="w-6 h-6" />
           </a>
-          <a href="/about" class="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 gitransition
+          <a href="/about" class="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition
              -colors duration-200" aria-label="About">
-            <HelpCircle class="w-5 h-5" />
+            <HelpCircle className="w-6 h-6" />
           </a>
           <ThemeSwitcher />
         </div>
