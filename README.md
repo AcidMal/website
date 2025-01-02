@@ -30,10 +30,11 @@ While the website may not be feature-complete yet, I'm excited to share my progr
 
 Here are a few things I'm planning to work on next:
 - Improve styling with CSS for a more polished look.
-- Add additional pages like a portfolio and blog.
+- Add additional pages like a portfolio and ~~blog~~.
 - Implement more advanced features using **JavaScript** and **Astro components**.
 - Improve the Blog posts by adding a CMS system. So I can upload more efficiently.
-- Fix Styling and make pages feel more lively.
+- ~~Fix Styling and make pages feel more lively.~~
+- Make page more dynamic and interactive.
 
 ## How to View the Website
 
