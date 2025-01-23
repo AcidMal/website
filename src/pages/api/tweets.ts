@@ -95,9 +95,10 @@ export const GET: APIRoute = async ({ request }) => {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Detailed Twitter API Error:', error);
-    return new Response(JSON.stringify({ data: mockTweets, source: 'mock', error: error.message }), {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return new Response(JSON.stringify({ data: mockTweets, source: 'mock', error: errorMessage }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
