@@ -80,7 +80,7 @@ const TwitterFeed: React.FC = () => {
         ))}
       </div>
       <a
-        href="https://twitter.com/iamacidmal"
+        href={`https://twitter.com/${import.meta.env.TWITTER_USERNAME}`}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block mt-4 text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300
