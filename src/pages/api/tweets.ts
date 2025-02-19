@@ -27,7 +27,7 @@ const mockTweets: Tweet[] = [
 export const GET: APIRoute = async ({ request }) => {
   console.log('API route called');
   
-  const username = import.meta.env.TWITTER_USERNAME;
+  const username = import.meta.env.PUBLIC_TWITTER_USERNAME;
   const bearerToken = import.meta.env.TWITTER_BEARER_TOKEN;
 
   console.log('Environment variables:', { 
