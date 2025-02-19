@@ -1,7 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import { Home, HelpCircle, MessageSquareMore, Menu } from 'lucide-react';
-
+import { Home, HelpCircle, MessageSquareMore, Menu, Mail } from 'lucide-react';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import SocialButtons from '../components/SocialButtons.astro';
 import AcidMalIcon from '../assets/acidmalicon.jpg';
@@ -75,6 +74,7 @@ const { title, description = "AcidMal's Website" } = Astro.props;
               <a href="/" class="inline-block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-xl animate-slideDown [animation-delay:0ms]">Home</a>
               <a href="/blog" class="inline-block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-xl animate-slideDown [animation-delay:300ms]">Blog</a>
               <a href="/about" class="inline-block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-xl animate-slideDown [animation-delay:1600ms]">About</a>
+              <a href="https://mail.acidmal.com" class="inline-block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-xl animate-slideDown [animation-delay:1600ms]">E-Mail</a>
             </div>
           </a>
         </div>
