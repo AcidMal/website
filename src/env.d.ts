@@ -8,9 +8,3 @@ interface ImportMetaEnv {
 interface ImportMeta {
     readonly env: ImportMetaEnv;
 }
-
-interface Window {
-    emailjs: any;
-}
-
-declare const emailjs: any;
