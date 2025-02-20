@@ -11,7 +11,7 @@ const { className = '' } = Astro.props;
 <div class:list={["flex space-x-4", className]}>
 
   <a
-    href="https://twitter.com/iamacidmal"
+    href={`https://x.com/${import.meta.env.PUBLIC_TWITTER_USERNAME}`}
     class="social-button"
     aria-label="X"
   >
@@ -19,7 +19,7 @@ const { className = '' } = Astro.props;
   </a>
 
   <a
-    href="https://instagram.com/iamacidmal"
+    href={`https://instagram.com/${import.meta.env.PUBLIC_INSTAGRAM_USERNAME}`}
     class="social-button"
     aria-label="Instagram"
   >
@@ -27,7 +27,7 @@ const { className = '' } = Astro.props;
   </a>
 
   <a
-    href="https://discord.com/users/272313925205360641"
+    href={`https://discord.com/users/${import.meta.env.PUBLIC_DISCORD_ID}`}
     class="social-button"
     aria-label="Discord"
   >
@@ -35,7 +35,7 @@ const { className = '' } = Astro.props;
  </a>
 
   <a
-    href="https://github.com/acidmal"
+    href={`https://github.com/${import.meta.env.PUBLIC_GITHUB_USERNAME}`}
     class="social-button"
     aria-label="GitHub"
   >
@@ -43,7 +43,7 @@ const { className = '' } = Astro.props;
   </a>
 
   <a
-    href="https://steamcommunity.com/id/AcidMal/"
+    href={`https://steamcommunity.com/id/${import.meta.env.PUBLIC_STEAM_ID}`}
     class="social-button"
     aria-label="Steam"
   >
