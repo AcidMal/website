@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { EmailRegistrationForm } from '../components/EmailRegistrationForm';
+---
+
+<Layout title="Register Email Account">
+  <div class="container mx-auto px-4 py-8">
+    <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="px-6 py-8">
+        <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">
+          Create Your Email Account
+        </h2>
+        <div class="registration-form">
+          <EmailRegistrationForm client:only="react" />
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .registration-form {
+    width: 100%;
+  }
+</style>
