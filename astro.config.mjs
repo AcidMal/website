@@ -10,7 +10,7 @@ export default defineConfig({
   adapter: vercel(),
   vite: {
     ssr: {
-      noExternal: ['react-icons'],
+      noExternal: ['@emotion/react', '@emotion/styled', '@mui/material'],
     },
   }
 });
