@@ -1,6 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import { Home, HelpCircle, MessageSquareMore, Menu, Mail, Contact } from 'lucide-react';
+import { Home, HelpCircle, Menu, Mail, Contact } from 'lucide-react';
 import ThemeSwitcher from '../components/ThemeSwitcher.astro';
 import SocialButtons from '../components/SocialButtons.astro';
 import AcidMalIcon from '../assets/acidmalicon.jpg';
@@ -51,39 +51,42 @@ const { title, description = "AcidMal's Website" } = Astro.props;
       });
     </script>
   </head>
-  <body class="flex flex-col min-h-full bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <header class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 shadow-md mb-3">
+  <body class="flex flex-col min-h-full text-gray-900 dark:text-gray-100">
+    <header class="site-header relative z-30 bg-gray-200/90 dark:bg-gray-800/90 text-gray-900 dark:text-gray-100 p-4 shadow-md mb-3 backdrop-blur-md">
       <nav class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
-	        <a href="/" class="ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:bg-grey-900 hover:opacity-50">
-            <img 
-              src={AcidMalIcon.src} 
-              alt="AcidMal Icon" 
-              class="w-12 h-12 rounded-full mr-2 border-2 border-gray-900 dark:border-2 dark:border-gray-100"
+          <a href="/" class="brand-mark" aria-label="AcidMal home">
+            <img
+              src={AcidMalIcon.src}
+              alt=""
+              class="w-12 h-12 rounded-full border-2 border-gray-900 dark:border-gray-100"
             />
           </a>
-          <a href="/" class="text-2xl font-bold ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-gray-400">AcidMal</a>
+          <a href="/" class="brand-name text-2xl font-bold">AcidMal</a>
         </div>
         <div class="flex items-center space-x-4">
-          <div class="relative group">
-            <button class="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors duration-200">
+          <div class="relative">
+            <button
+              id="nav-menu-button"
+              type="button"
+              class="nav-toggle p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
+              aria-label="Open menu"
+              aria-expanded="false"
+              aria-controls="nav-menu"
+            >
               <Menu className="w-6 h-6" />
             </button>
-            <div class="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-700 rounded-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
-              <div class="absolute -top-2 left-0 right-0 h-2"></div>
-              <a href="/" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 animate-slideDown [animation-delay:0ms]">
+            <div id="nav-menu" class="nav-panel" inert>
+              <a href="/" class="nav-link">
                 <Home className="w-5 h-5 mr-3" /> Home
               </a>
-              <a href="/blog" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 animate-slideDown [animation-delay:50ms]">
-                <MessageSquareMore className="w-5 h-5 mr-3" /> Blog
-              </a>
-              <a href="/about" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 animate-slideDown [animation-delay:100ms]">
+              <a href="/about" class="nav-link">
                 <HelpCircle className="w-5 h-5 mr-3" /> About
               </a>
-              <a href="/contact" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 animate-slideDown [animation-delay:50ms]">
+              <a href="/contact" class="nav-link">
                 <Contact className="w-5 h-5 mr-3" /> Contact
               </a>
-              <a href="https://mail.acidmal.com" class="flex items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors duration-200 animate-slideDown [animation-delay:150ms]">
+              <a href="https://mail.acidmal.com" class="nav-link">
                 <Mail className="w-5 h-5 mr-3" /> E-Mail
               </a>
             </div>
@@ -94,31 +97,318 @@ const { title, description = "AcidMal's Website" } = Astro.props;
         </div>
       </nav>
     </header>
-    <main class="flex-grow container mx-auto p-4">
+    <main class="flex-grow container mx-auto p-4" transition:animate="fade">
       <slot />
     </main>
-    <footer class="bg-gray-200 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-4 mt-8">
+    <footer class="reveal bg-gray-200/90 dark:bg-gray-800/90 text-gray-900 dark:text-gray-100 p-4 mt-8 backdrop-blur-md" style="--d: 80ms">
       <div class="container mx-auto text-center space-y-4">
         <SocialButtons className="justify-center" />
         <p>&copy; 2024 - {new Date().getFullYear()} AcidMal. All rights reserved.</p>
       </div>
     </footer>
+    <script>
+      type Stop = () => void;
+
+      function bootMotion() {
+        const previous = (window as Window & { __acidmalStop?: Stop }).__acidmalStop;
+        previous?.();
+
+        const stops: Stop[] = [];
+        const button = document.getElementById('nav-menu-button');
+        const panel = document.getElementById('nav-menu');
+
+        const setMenu = (open: boolean) => {
+          if (!button || !panel) return;
+          panel.classList.toggle('is-open', open);
+          button.setAttribute('aria-expanded', open ? 'true' : 'false');
+          button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+          if (open) panel.removeAttribute('inert');
+          else panel.setAttribute('inert', '');
+        };
+
+        if (button && panel) {
+          const onButtonClick = (event: Event) => {
+            event.stopPropagation();
+            setMenu(!panel.classList.contains('is-open'));
+          };
+          const onPointerDown = (event: Event) => {
+            const target = event.target;
+            if (!(target instanceof Node)) return;
+            if (!panel.contains(target) && !button.contains(target)) setMenu(false);
+          };
+          const onKeyDown = (event: Event) => {
+            if (event instanceof KeyboardEvent && event.key === 'Escape') setMenu(false);
+          };
+          button.addEventListener('click', onButtonClick);
+          document.addEventListener('pointerdown', onPointerDown);
+          document.addEventListener('keydown', onKeyDown);
+          panel.querySelectorAll('a').forEach((link) => {
+            const onLinkClick = () => {
+              window.setTimeout(() => setMenu(false), 0);
+            };
+            link.addEventListener('click', onLinkClick);
+            stops.push(() => link.removeEventListener('click', onLinkClick));
+          });
+          stops.push(() => {
+            button.removeEventListener('click', onButtonClick);
+            document.removeEventListener('pointerdown', onPointerDown);
+            document.removeEventListener('keydown', onKeyDown);
+          });
+        }
+
+        const items = Array.from(document.querySelectorAll('.reveal'));
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce) {
+          items.forEach((item) => item.classList.add('is-in'));
+        } else {
+          const revealVisible = () => {
+            const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+            items.forEach((item) => {
+              if (item.classList.contains('is-in')) return;
+              const rect = item.getBoundingClientRect();
+              if (rect.top < viewHeight * 0.92 && rect.bottom > 0) item.classList.add('is-in');
+            });
+          };
+          revealVisible();
+          window.addEventListener('scroll', revealVisible, { passive: true });
+          window.addEventListener('resize', revealVisible);
+          const frame = window.requestAnimationFrame(revealVisible);
+          stops.push(() => {
+            window.cancelAnimationFrame(frame);
+            window.removeEventListener('scroll', revealVisible);
+            window.removeEventListener('resize', revealVisible);
+          });
+        }
+
+        (window as Window & { __acidmalStop?: Stop }).__acidmalStop = () => {
+          stops.forEach((stop) => stop());
+        };
+      }
+
+      const motionWindow = window as Window & { __acidmalMotion?: boolean };
+      if (!motionWindow.__acidmalMotion) {
+        motionWindow.__acidmalMotion = true;
+        document.addEventListener('astro:page-load', bootMotion);
+      }
+      bootMotion();
+    </script>
   </body>
 </html>
 
-<style>
-  @keyframes slideDown {
-    0% {
+<style is:global>
+  html {
+    background-color: #f3f4f6;
+  }
+
+  html.dark {
+    background-color: #111827;
+  }
+
+  body {
+    background: transparent;
+    position: relative;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 8%, rgba(168, 85, 247, 0.22), transparent 32%),
+      radial-gradient(circle at 88% 0%, rgba(192, 132, 252, 0.16), transparent 28%),
+      radial-gradient(circle at 70% 90%, rgba(147, 51, 234, 0.12), transparent 30%);
+    animation: drift 16s ease-in-out infinite alternate;
+  }
+
+  body > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-mark,
+  .brand-name,
+  .nav-toggle {
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .brand-mark:hover {
+    transform: rotate(-8deg) scale(1.06);
+  }
+
+  .brand-name:hover {
+    color: #a78bfa;
+  }
+
+  .nav-toggle[aria-expanded="true"] {
+    transform: rotate(90deg);
+    background-color: rgb(209 213 219);
+  }
+
+  html.dark .nav-toggle[aria-expanded="true"] {
+    background-color: rgb(55 65 81);
+  }
+
+  .nav-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    width: 12.5rem;
+    padding: 0.5rem 0;
+    border-radius: 0.75rem;
+    background: white;
+    box-shadow: 0 18px 40px -18px rgba(88, 28, 135, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px) scale(0.96);
+    transform-origin: top right;
+    transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+  }
+
+  html.dark .nav-panel {
+    background: rgb(55 65 81);
+  }
+
+  .nav-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.55rem 1rem;
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .nav-panel.is-open .nav-link {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.28s ease, transform 0.28s ease, background-color 0.2s ease, padding-left 0.2s ease;
+  }
+
+  .nav-panel.is-open .nav-link:nth-child(1) { transition-delay: 40ms; }
+  .nav-panel.is-open .nav-link:nth-child(2) { transition-delay: 80ms; }
+  .nav-panel.is-open .nav-link:nth-child(3) { transition-delay: 120ms; }
+  .nav-panel.is-open .nav-link:nth-child(4) { transition-delay: 160ms; }
+
+  .nav-link:hover {
+    background: rgb(243 244 246);
+    padding-left: 1.25rem;
+  }
+
+  html.dark .nav-link:hover {
+    background: rgb(75 85 99);
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .pop-card {
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .pop-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 40px -24px rgba(147, 51, 234, 0.85);
+  }
+
+  .lift-row {
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+  .lift-row:hover {
+    transform: translateX(6px);
+  }
+
+  .pulse-dot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 9999px;
+    background: #a855f7;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.55);
+    animation: pulse-dot 2.2s ease-out infinite;
+  }
+
+  .feature-list li {
+    border-radius: 0.6rem;
+    padding: 0.2rem 0.45rem;
+    margin-left: -0.45rem;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+  }
+
+  .feature-list li:hover {
+    transform: translateX(6px);
+    background: rgba(168, 85, 247, 0.12);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 9999px;
+    background: #c084fc;
+    transform: translateX(-50%) scale(0.4);
+    transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .reveal.is-in .timeline-dot {
+    transform: translateX(-50%) scale(1);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
       opacity: 0;
-      transform: translateY(-15px);
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+      transition-delay: var(--d, 0ms);
     }
-    100% {
+
+    .reveal.is-in {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
+    }
+
+    .pop-card.reveal.is-in:hover {
+      transform: translateY(-6px);
     }
   }
-  
-  .animate-slideDown {
-    animation: slideDown 400ms ease-in-out forwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    body::before,
+    .pulse-dot,
+    .brand-mark,
+    .nav-toggle,
+    .nav-panel,
+    .nav-link,
+    .pop-card,
+    .lift-row,
+    .timeline-dot {
+      animation: none;
+      transition: none;
+    }
+
+    .pop-card:hover,
+    .lift-row:hover {
+      transform: none;
+    }
+  }
+
+  @keyframes drift {
+    from { transform: translate3d(0, 0, 0) scale(1); }
+    to { transform: translate3d(2%, -2%, 0) scale(1.06); }
+  }
+
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.55); }
+    70% { box-shadow: 0 0 0 8px rgba(168, 85, 247, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
   }
 </style>

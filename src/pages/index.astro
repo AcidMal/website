@@ -1,121 +1,147 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TwitterFeed from '../components/TwitterFeed';
 ---
 
-<Layout title="Home | AcidMal">
+<Layout
+  title="Home | AcidMal"
+  description="AcidMal is building MomoBot, a Discord bot for moderation and community tools."
+>
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-4xl font-bold mb-8">Welcome to AcidMal's Thought Vault</h1>
+    <header class="reveal mb-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-purple-500 dark:text-purple-300 mb-3">
+        Now
+      </p>
+      <h1 class="text-4xl font-bold mb-4">Building MomoBot</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+        I'm AcidMal. I make tools for the communities I spend time in. MomoBot is the project on my desk, and it is what I am working on day to day.
+      </p>
+    </header>
+
     <div class="grid gap-8">
-      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">About This Site</h2>
+      <section class="pop-card reveal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 80ms">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <h2 class="text-2xl font-bold">MomoBot</h2>
+          <span class="inline-flex items-center gap-2 rounded-full bg-purple-100 dark:bg-purple-900/50 px-2.5 py-1 text-xs font-semibold text-purple-700 dark:text-purple-200">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Active
+          </span>
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          MomoBot is a Discord bot for moderation and the day-to-day running of a server. One bot covers many servers. Staff keep cases, timed punishments, automod, lockdowns, notes, and reports. Members get welcomes, tickets, verification, levelling, and a private check-in. Each server has its own dashboard, and the colors chosen there are the colors on the embeds the bot posts.
+        </p>
+        <ul class="feature-list list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2 mb-4">
+          <li>Cases, automod, lockdowns, staff notes, and member reports</li>
+          <li>Tickets, verification, welcomes, levelling, stats, and temporary voice rooms</li>
+          <li>Alerts when a linked Twitch, YouTube, or Kick channel goes live</li>
+          <li>A quiet check-in that can reach someone by direct message, with the sender's name hidden unless they choose to include it</li>
+        </ul>
+        <p class="text-gray-600 dark:text-gray-300 mb-4">
+          It stores everything in PostgreSQL. Several bot processes share Discord shards, and a separate API serves the dashboard. I run it on Kubernetes.
+        </p>
         <p class="text-gray-600 dark:text-gray-300">
-          This is my personal website. It is a collection of all my projects and ideas within projects.
-          I'll mostly post on social media but when I have a bigger project I'll update this site with
-          guides, my processes and just general rambles.
+          The dashboard is at
+          <a href="https://dash.momobot.app" target="_blank" rel="noopener noreferrer" class="site-link">dash.momobot.app</a>.
+          Support lives on the
+          <a href="https://discord.gg/YHPnuCxTK2" target="_blank" rel="noopener noreferrer" class="site-link">MomoBot Discord</a>.
         </p>
       </section>
 
-      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">Current Project</h2>
+      <section class="pop-card reveal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 120ms">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <h2 class="text-2xl font-bold">Mail</h2>
+          <span class="inline-flex items-center gap-2 rounded-full bg-purple-100 dark:bg-purple-900/50 px-2.5 py-1 text-xs font-semibold text-purple-700 dark:text-purple-200">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            Active
+          </span>
+        </div>
         <p class="text-gray-600 dark:text-gray-300">
-          I'm currently building a fully self-hosted email service using 
-          <a 
-          href="https://mailcow.email/" 
-          target="_blank"
-	        class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 dark:text-purple-400 
-          hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">
-	        MailCow</a>, 
-          an open-source email server solution. This project gives me complete control over the entire email infrastructure, 
-          providing a secure, private, and customizable email experience without relying on third-party providers. By using 
-          MailCow, I'm able to set up a feature-rich email server with capabilities such as advanced spam filtering, email 
-          encryption, and seamless integration with modern email clients. The platform allows me to manage everything from 
-          mailboxes to security settings, including custom domains, email routing, and more—all through an intuitive web interface.
+          The mail host at
+          <a href="https://mail.acidmal.com" target="_blank" rel="noopener noreferrer" class="site-link">mail.acidmal.com</a>
+          is still running. It is a self-hosted
+          <a href="https://mailcow.email/" target="_blank" rel="noopener noreferrer" class="site-link">Mailcow</a>
+          server I stood up in 2025, and it is the inbox I use now.
         </p>
       </section>
 
-      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 class="text-2xl font-bold mb-4">Older Project</h2>
-        <p class="text-gray-600 dark:text-gray-300">
-
-          I'm currently working on the development of a Modded Minecraft Server which started out as a
-          casual idea but has evolved with the collaborative efforts of many community members, including
-          <a 
-          href="https://mynameistito.com/" 
-          target="_blank" 
-          class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 dark:text-purple-400 
-          hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">
-          Tito
-          </a>
-          . This server employs the modpack ATM (All The Mods) 10 and serves a community where a 
-          significant number of players are from the
-          <a 
-          href="https://discord.gg/kzg" 
-          target="_blank" 
-          class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 dark:text-purple-400
-          hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">
-          KZG
-          </a>
-          community, offering them an enhanced Minecraft experience through various mods. Additionally, to improve
-          management efficiency, we have integrated an administration panel utilizing
-          <a 
-          href="https://pterodactyl.io/" 
-          target="_blank" 
-          class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 dark:text-purple-400 
-          hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">
-          Pterodactyl Panel
-        </a>,
-          which allows staff to manage and oversee server utilities with ease.
-
+      <section class="pop-card reveal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 140ms">
+        <h2 class="text-2xl font-bold mb-2">The past year</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          This past year I started MomoBot, and I am still building it. This month I also put up a site for VANTA Automotive Collective.
         </p>
+        <ol class="space-y-6">
+          <li class="reveal relative border-l-2 border-purple-400 pl-4" style="--d: 40ms">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="text-sm font-semibold text-purple-500 dark:text-purple-300">November 2026 · ongoing</p>
+            <h3 class="text-lg font-bold mt-1 mb-2">MomoBot, still the main project</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              Creator alerts for Twitch, YouTube, and Kick. Levelling, server stats, and voice channels that appear when someone joins a lobby and disappear when the room empties. This month I added the check-in command: a private message, a prepared note or one you write, and a way for the recipient to ask for a review if it did not feel okay.
+            </p>
+          </li>
+          <li class="reveal relative border-l-2 border-purple-400 pl-4" style="--d: 90ms">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="text-sm font-semibold text-purple-500 dark:text-purple-300">November 2026</p>
+            <h3 class="text-lg font-bold mt-1 mb-2">VANTA Automotive Collective</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              A pre-launch website and staff portal for a Central Queensland automotive collective. Public pages, accounts, an enquiry inbox, and editors for site copy and giveaway drafts. Membership checkout and prize draws are not switched on. The site is
+              <a href="https://www.vantacollective.com.au" target="_blank" rel="noopener noreferrer" class="site-link">vantacollective.com.au</a>.
+            </p>
+          </li>
+          <li class="reveal relative border-l-2 border-purple-400 pl-4" style="--d: 140ms">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="text-sm font-semibold text-purple-500 dark:text-purple-300">October 2026</p>
+            <h3 class="text-lg font-bold mt-1 mb-2">MomoBot, first version</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              I started the bot in October. The first cut covered slash-command moderation, automod, tickets, verification, logging, per-server themes, and the dashboard. Shard leasing and the Kubernetes deploy landed in the same stretch, including a Google Kubernetes Engine setup so the gateway, API, and dashboard can run separately.
+            </p>
+          </li>
+        </ol>
       </section>
 
-      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-	<div class="grid grid-cols-2 gap-4">
-	  <div>
-          <h2 class="text-2xl font-bold mb-4">Join the Minecraft</h2>
-          <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
-            <li>IP: [No Longer Active]</li>
-            <li>Minecraft Version: 1.21.1</li>
-            <li>Mod Pack: 
-	            <a 
-              href="https://www.curseforge.com/minecraft/modpacks/all-the-mods-10/files/6009022" 
-              target="_blank"
-	            class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 dark:text-purple-400 
-              hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">
-	            All the Mods 10 - 2.8</a> 
-            </li>
-	          <li>Check out our Server 
-              <a 
-              href={`/gallary/minecraft`} 
-              class="text-purple-400 ease-in-out duration-300 hover:ease-in-out hover:duration-300 hover:text-purple-600 dark:text-purple-400 
-              hover:ease-in-out hover:duration-300 dark:hover:text-purple-300">
-              Gallary</a>!
-            </li>
-          </ul>
-	  </div>
-    <div class="bg-gray-100 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
-      <p class="text-gray-600 dark:text-gray-300 mb-4">
-        Hi Everyone!
-      </p>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">
-        Thanks for participating in the Server. Unfortnately due to low player counts coming to the end of the server renewal I have decided it would be best to
-        discontinue the server for now.
-      </p>
-      <p class="text-gray-600 dark:text-gray-300 mb-4">
-        In future if a big enough user base is establised I will evaluate bringing the server back again. Best of luck and godspeed.
-      </p>
-      <p class="text-gray-600 dark:text-gray-300">
-        AcidMal &#60;3
-      </p>
-    </div>  
-	</div>
-      </section>
-      <section class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <TwitterFeed client:load />
+      <section class="pop-card reveal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 180ms">
+        <h2 class="text-2xl font-bold mb-2">Earlier</h2>
+        <p class="text-gray-600 dark:text-gray-300 mb-6">
+          Before this past year I was already putting servers and bots online. These are the ones that stuck around long enough to remember.
+        </p>
+        <ol class="space-y-6">
+          <li class="reveal relative border-l-2 border-purple-400 pl-4" style="--d: 40ms">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="text-sm font-semibold text-purple-500 dark:text-purple-300">2025</p>
+            <h3 class="text-lg font-bold mt-1 mb-2">This site</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              I built this site in Astro.
+            </p>
+          </li>
+          <li class="reveal relative border-l-2 border-purple-400 pl-4" style="--d: 90ms">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="text-sm font-semibold text-purple-500 dark:text-purple-300">Late 2024 – early 2025</p>
+            <h3 class="text-lg font-bold mt-1 mb-2">Minecraft server</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              A modded server on All the Mods 10, run with
+              <a href="https://mynameistito.com/" target="_blank" rel="noopener noreferrer" class="site-link">Tito</a>
+              and people from the
+              <a href="https://discord.gg/kzg" target="_blank" rel="noopener noreferrer" class="site-link">KZG</a>
+              community. It is offline. A few screenshots are still in the
+              <a href="/gallary/minecraft" class="site-link">gallery</a>.
+            </p>
+          </li>
+          <li class="reveal relative border-l-2 border-purple-400 pl-4" style="--d: 140ms">
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <p class="text-sm font-semibold text-purple-500 dark:text-purple-300">2022–2023</p>
+            <h3 class="text-lg font-bold mt-1 mb-2">Anagram</h3>
+            <p class="text-gray-600 dark:text-gray-300">
+              A Discord bot I ran on
+              <a href="https://github.com/Cog-Creators/Red-DiscordBot" target="_blank" rel="noopener noreferrer" class="site-link">Red</a>.
+              It reached more than 100 servers and covered music and moderation. I did not build all of it myself. Bugs at the time were enough that I stopped maintaining it.
+            </p>
+          </li>
+        </ol>
       </section>
     </div>
   </div>
 </Layout>
 
-
+<style>
+  .site-link {
+    @apply text-purple-400 transition-colors duration-300 hover:text-purple-600 dark:hover:text-purple-300;
+  }
+</style>

@@ -1,20 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Mail } from 'lucide-react';
-import { Discord, X, Github, Instagram, Steam } from 'simple-icons-astro';
+import { X, Github, Instagram, Steam } from 'simple-icons-astro';
 ---
 
 <Layout title="Contact | AcidMal">
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-4xl font-bold mb-8">Get in Touch</h1>
+    <h1 class="reveal text-4xl font-bold mb-8">Get in Touch</h1>
     
     <div class="grid md:grid-cols-2 gap-8">
       <!-- Social Media Section -->
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+      <div class="pop-card reveal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 70ms">
         <h2 class="text-2xl font-semibold mb-4">Connect With Me</h2>
         <div class="space-y-4">
           <a href={`https://x.com/${import.meta.env.PUBLIC_TWITTER_USERNAME}`} 
-             class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out hover:ease-in-out hover:duration-300">
+             class="lift-row flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <X className="w-6 h-6 text-grey-400 mr-3" />
             <div>
               <p class="font-medium">X</p>
@@ -23,7 +23,7 @@ import { Discord, X, Github, Instagram, Steam } from 'simple-icons-astro';
           </a>
           
           <a href={`https://github.com/${import.meta.env.PUBLIC_GITHUB_USERNAME}`} 
-             class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out hover:ease-in-out hover:duration-300">
+             class="lift-row flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <Github className="w-6 h-6 text-grey-400 mr-3" />
             <div>
               <p class="font-medium">GitHub</p>
@@ -32,15 +32,16 @@ import { Discord, X, Github, Instagram, Steam } from 'simple-icons-astro';
           </a>
 
           <a href={`https://instagram.com/${import.meta.env.PUBLIC_INSTAGRAM_USERNAME}`}
-             class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out hover:ease-in-out hover:duration-300">
+             class="lift-row flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <Instagram className="w-6 h-6 text-grey-400 mr-3" />
             <div>
               <p class="font-medium">Instagram</p>
               <p class="text-sm text-gray-600/50 dark:text-gray-300/50">@{import.meta.env.PUBLIC_INSTAGRAM_USERNAME}</p>
             </div>
+          </a>
 
           <a href={`https://steamcommunity.com/id/${import.meta.env.PUBLIC_STEAM_ID}`}
-             class="flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 ease-in-out hover:ease-in-out hover:duration-300">
+             class="lift-row flex items-center p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <Steam className="w-6 h-6 text-grey-400 mr-3" />
             <div>
               <p class="font-medium">Steam</p>
@@ -51,7 +52,7 @@ import { Discord, X, Github, Instagram, Steam } from 'simple-icons-astro';
       </div>
 
       <!-- Email Form Section -->
-      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+      <div class="pop-card reveal bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 120ms">
         <h2 class="text-2xl font-semibold mb-4">Send Me an Email</h2>
         <form 
           action="https://api.web3forms.com/submit"
@@ -114,7 +115,7 @@ import { Discord, X, Github, Instagram, Steam } from 'simple-icons-astro';
       </div>
     </div>
 
-    <div class="mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+    <div class="pop-card reveal mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg" style="--d: 140ms">
       <h2 class="text-2xl font-semibold mb-4">Alternative Contact Methods</h2>
       <p class="text-gray-600 dark:text-gray-300 mb-4">
         You can also reach me directly at my email address:
